@@ -55,7 +55,8 @@ st.markdown(
     unsafe_allow_html=True)
 
 # Create or connect to SQLite database
-conn = sqlite3.connect("users.db")
+db_path = os.path.join(st.__path__[0],"users.db")
+conn = sqlite3.connect(db_path)
 cursor = conn.cursor()
 
 # Create table if it doesn't exist
