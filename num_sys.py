@@ -7,6 +7,7 @@ import smtplib as s
 import random
 from num_dict import num, dep_code, doc_code
 import time
+import tempfile
 
 # Set page title and config
 st.set_page_config(
@@ -55,7 +56,8 @@ st.markdown(
     unsafe_allow_html=True)
 
 # Create or connect to SQLite database
-db_path = os.path.join(st.__path__[0],"users.db")
+temp_dir = tempfile.gettempdir()
+db_path = os.path.join(temp_dir, 'users.db')
 conn = sqlite3.connect(db_path)
 cursor = conn.cursor()
 
